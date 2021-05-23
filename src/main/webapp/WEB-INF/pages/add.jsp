@@ -14,16 +14,21 @@
 </head>
 <body>
 <h1>员工添加页面</h1>
-<form:form action="">
+<%
+    pageContext.setAttribute("ctp",request.getContextPath());
+%>
+<form:form action="${ctp}/emp" modelAttribute="employee" method="post">
     lastName:<form:input path="lastName"/><br/>
     email:<form:input path="email"/><br/>
-    gender:<br/>
-        男:<form:radiobutton path="gender" value="1"/><br/>
+    gender:&nbsp;&nbsp;&nbsp;
+        男:<form:radiobutton path="gender" value="1"/>&nbsp;&nbsp;&nbsp;
         女:<form:radiobutton path="gender" value="0"/><br/>
     dept:
         <form:select path="department.id"
-                     items="${depetments}" itemLabel="depetmentName" itemValue="id"
-
+                     items="${departments}"
+                     itemLabel="departmentName"
+                     itemValue="id"/> <br/>
+    <input type="submit" value="保存"/>
 </form:form>
 </body>
 </html>

@@ -29,6 +29,11 @@
 
 <%--</form>--%>
 
-<jsp:forward page="/emps"></jsp:forward>
+<%--<jsp:forward page="/emps"></jsp:forward>--%>
+<%
+    pageContext.setAttribute("cpt",request.getContextPath());
+%>
+<a href="${cpt}/test01">拦截器</a>
+<a href="${cpt}/handle01">异常</a>
 </body>
 </html>

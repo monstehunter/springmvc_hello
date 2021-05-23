@@ -15,6 +15,9 @@
 </head>
 <body>
 <h1>员工列表页面</h1>
+<%
+    pageContext.setAttribute("ctp",request.getContextPath());
+%>
 <table border="1" cellpadding="5" cellspacing="0">
     <tr>
         <th>ID</th>
@@ -32,8 +35,12 @@
             <td>${emp.email}</td>
             <td>${emp.gender==0?"女":"男"}</td>
             <td>${emp.department.departmentName}</td>
-            <td><a href="/emp/${id}">EDIT</a></td>
-            <td><a href="/emp/${id}">DELETE</a></td>
+            <td><a href="${ctp}/emp/${emp.id}">EDIT</a></td>
+            <td><form action="${ctp}/emp/${emp.id}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="DELETE">
+            </form></td>
+
         </tr>
     </c:forEach>
 </table>
